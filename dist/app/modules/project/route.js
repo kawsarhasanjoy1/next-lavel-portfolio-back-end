@@ -5,5 +5,5 @@ const control_1 = require("./control");
 const projectRouter = (0, express_1.Router)();
 projectRouter.post('/create-project', control_1.ProjectController.createProject);
 projectRouter.get('/all-project', control_1.ProjectController.getProject);
-projectRouter.delete('/delete-project', control_1.ProjectController.deleteProject);
+projectRouter.delete('/delete-project/:id', control_1.ProjectController.deleteProject);
 exports.default = projectRouter;

@@ -26,8 +26,7 @@ const loginUser = async (payload: TLogin) => {
     expiresIn: "7d",
   });
   return {
-    user,
-    token
+    token,
   };
 };
 

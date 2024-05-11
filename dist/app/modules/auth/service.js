@@ -38,8 +38,7 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         expiresIn: "7d",
     });
     return {
-        user,
-        token
+        token,
     };
 });
 exports.authService = {

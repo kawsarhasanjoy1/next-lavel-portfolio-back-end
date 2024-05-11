@@ -17,13 +17,21 @@ const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const service_1 = require("./service");
 const sentResponse_1 = __importDefault(require("../../utils/sentResponse"));
 const loginUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = req.body;
-    const result = yield service_1.authService.loginUser(user);
-    (0, sentResponse_1.default)(res, {
-        statusCode: 201,
-        message: "User login successful",
-        data: result,
-    });
+    try {
+        const user = req.body;
+        const result = yield service_1.authService.loginUser(user);
+        (0, sentResponse_1.default)(res, {
+            statusCode: 201,
+            message: "User login successful",
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+        res.json({
+            message: err === null || err === void 0 ? void 0 : err.message,
+        });
+    }
 }));
 exports.authController = {
     loginUser,

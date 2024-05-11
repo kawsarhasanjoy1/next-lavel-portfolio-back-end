@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const controller_1 = require("./controller");
 const userRouter = (0, express_1.Router)();
-userRouter.post("/auth/register", controller_1.userController.createUser);
+userRouter.post("/register", controller_1.userController.createUser);
 userRouter.get("/auth", 
 //   auth(USER_ROLE.admin),
 controller_1.userController.findDataFromDb);

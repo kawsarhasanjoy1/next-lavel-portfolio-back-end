@@ -15,6 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userService = void 0;
 const modal_1 = __importDefault(require("./modal"));
 const createUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = payload;
+    const isExistsUser = yield modal_1.default.findOne({ email });
+    if (isExistsUser) {
+        throw new Error("user already exists..!");
+    }
     const result = yield modal_1.default.create(payload);
     return result;
 });

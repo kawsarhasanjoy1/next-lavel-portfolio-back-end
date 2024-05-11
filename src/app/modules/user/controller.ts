@@ -5,21 +5,27 @@ import sentResponse from "../../utils/sentResponse";
 
 const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const data = req.body;
-    const result = await userService.createUser(data);
-    const user = {
-      _id: result?._id,
-      username: result.username,
-      email: result.email,
-      role: result.role,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-    sentResponse(res, {
-      statusCode: 201,
-      message: "User created successful",
-      data: user,
-    });
+    try {
+      const data = req.body;
+      const result = await userService.createUser(data);
+      const user = {
+        _id: result?._id,
+        username: result.username,
+        email: result.email,
+        role: result.role,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      sentResponse(res, {
+        statusCode: 201,
+        message: "User created successful",
+        data: user,
+      });
+    } catch (err: any) {
+      res.json({
+        message: err?.message,
+      });
+    }
   }
 );
 const findDataFromDb = catchAsync(

@@ -5,14 +5,21 @@ import sentResponse from "../../utils/sentResponse";
 import httpStatus from "http-status";
 
 const loginUser = catchAsync(async (req: Request, res: Response) => {
-  const user = req.body;
-  const result = await authService.loginUser(user);
+  try {
+    const user = req.body;
+    const result = await authService.loginUser(user);
 
-  sentResponse(res, {
-    statusCode: 201,
-    message: "User login successful",
-    data: result,
-  });
+    sentResponse(res, {
+      statusCode: 201,
+      message: "User login successful",
+      data: result,
+    });
+  } catch (err: any) {
+    console.log(err);
+    res.json({
+      message: err?.message,
+    });
+  }
 });
 
 export const authController = {

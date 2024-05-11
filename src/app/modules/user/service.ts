@@ -2,6 +2,11 @@ import { TUser } from "./interface";
 import User from "./modal";
 
 const createUser = async (payload: TUser) => {
+  const { email } = payload;
+  const isExistsUser = await User.findOne({ email });
+  if (isExistsUser) {
+    throw new Error("user already exists..!");
+  }
   const result = await User.create(payload);
   return result;
 };

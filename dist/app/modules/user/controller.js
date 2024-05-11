@@ -17,21 +17,28 @@ const service_1 = require("./service");
 const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const sentResponse_1 = __importDefault(require("../../utils/sentResponse"));
 const createUser = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const data = req.body;
-    const result = yield service_1.userService.createUser(data);
-    const user = {
-        _id: result === null || result === void 0 ? void 0 : result._id,
-        username: result.username,
-        email: result.email,
-        role: result.role,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    };
-    (0, sentResponse_1.default)(res, {
-        statusCode: 201,
-        message: "User created successful",
-        data: user,
-    });
+    try {
+        const data = req.body;
+        const result = yield service_1.userService.createUser(data);
+        const user = {
+            _id: result === null || result === void 0 ? void 0 : result._id,
+            username: result.username,
+            email: result.email,
+            role: result.role,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        };
+        (0, sentResponse_1.default)(res, {
+            statusCode: 201,
+            message: "User created successful",
+            data: user,
+        });
+    }
+    catch (err) {
+        res.json({
+            message: err === null || err === void 0 ? void 0 : err.message,
+        });
+    }
 }));
 const findDataFromDb = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield service_1.userService.findDataFromDb();
