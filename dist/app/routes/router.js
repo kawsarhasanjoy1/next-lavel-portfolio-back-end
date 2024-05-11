@@ -8,6 +8,7 @@ const route_1 = __importDefault(require("../modules/skill/route"));
 const route_2 = __importDefault(require("../modules/project/route"));
 const route_3 = __importDefault(require("../modules/user/route"));
 const route_4 = __importDefault(require("../modules/auth/route"));
+const route_5 = __importDefault(require("../modules/blog/route"));
 const router = (0, express_1.Router)();
 const moduleRoute = [
     {
@@ -25,6 +26,10 @@ const moduleRoute = [
     {
         path: "/project",
         route: route_2.default,
+    },
+    {
+        path: "/blog",
+        route: route_5.default,
     },
 ];
 moduleRoute.forEach((route) => router.use(route.path, route.route));
