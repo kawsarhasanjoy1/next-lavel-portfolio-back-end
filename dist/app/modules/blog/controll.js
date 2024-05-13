@@ -17,7 +17,6 @@ const sentResponse_1 = __importDefault(require("../../utils/sentResponse"));
 const service_1 = require("./service");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const blog = req.body;
-    console.log(service_1.BlogService);
     const result = yield service_1.BlogService.createBlog(blog);
     (0, sentResponse_1.default)(res, {
         statusCode: 201,

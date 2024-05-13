@@ -5,7 +5,6 @@ import { BlogService } from "./service";
 
 const createBlog = async (req: Request, res: Response) => {
   const blog = req.body;
-  console.log(BlogService)
   const result = await BlogService.createBlog(blog)
   sentResponse(res, {
     statusCode: 201,

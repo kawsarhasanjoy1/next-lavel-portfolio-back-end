@@ -1,7 +1,5 @@
 export interface TBlog {
-    name: string;
-    what: string,
-    how: string,
-    image: string;
-  }
-  
+  name: string;
+  description: string;
+  image: string;
+}

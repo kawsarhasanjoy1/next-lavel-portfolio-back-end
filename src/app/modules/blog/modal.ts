@@ -11,14 +11,7 @@ const blogSchema = new Schema<TBlog>(
       type: String,
       required: true,
     },
-    what: {
-      type: String,
-      required: true,
-    },
-    how: {
-      type: String,
-      required: true,
-    },
+   description: {type: String, required: true}
   },
   { timestamps: true }
 );
